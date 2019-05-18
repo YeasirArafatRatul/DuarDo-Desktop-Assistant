@@ -1,4 +1,6 @@
 import os
+import sys
+import random
 import pyttsx3
 import datetime
 import speech_recognition as sr
@@ -74,6 +76,9 @@ if __name__ == "__main__":
             speak("According to wikipedia")
             print(results)
             speak(results)
+        elif 'hello' in query:
+            speak('Hello Sir')
+            
         elif 'open youtube' in query:
             webbrowser.open("youtube.com")
 
@@ -92,6 +97,8 @@ if __name__ == "__main__":
         elif 'play music' in query:
             music_folder = 'F:\\SONGS\\Favourite'
             songs = os.listdir(music_folder)
+            random_music = music_folder + random.choice(songs) + '.mp3'
+            os.system(random_music)
             os.startfile(os.path.join(music_folder, songs[0]))
         elif 'the time' in query:
             strTime = datetime.datetime.now().strftime("%H:%M:%S")
@@ -116,4 +123,4 @@ if __name__ == "__main__":
         #         speak("Sorry,I could not send the email")
         elif 'Go To Sleep Mode' in query:
             speak("Okey Boss! I am quiting...")
-            exit()
+            sys.exit()
